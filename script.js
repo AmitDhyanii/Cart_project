@@ -1,33 +1,52 @@
-// Sample data for products and popular items
 const products = [
     {
-        name: 'EJ 100 Ox Chair',
-        description: 'Hangup data.',
-        price: '$3,456',
-        image: 'https://via.placeholder.com/150',
+        name: 'Goku Wallpaper',
+        description: 'Master Ultra Instinct.',
+        price: '$10',
+        image: 'image/goku.jpg',
     },
     {
-        name: 'Modern Desk',
-        description: 'Office Furniture.',
-        price: '$2,199',
-        image: 'https://via.placeholder.com/150',
+        name: 'Tanjiro',
+        description: 'A wallpaper for DS fans.',
+        price: '$6',
+        image: 'image/Tanjiro.jpg',
+    },
+    {
+        name: 'Itachi Uchiha',
+        description: 'Clan Destroyer.',
+        price: '$11',
+        image: 'image/Itachi.jpg',
+    },
+    {
+        name: 'Prince Vegeta',
+        description: 'Ultra Ego.',
+        price: '$15',
+        image: 'image/vegeta_ultra_ego.jpg',
+    },
+    {
+        name: 'Levi Ackerman',
+        description: 'Strongest Soldier.',
+        price: '$9',
+        image: 'image/Levi.jpg',
     }
 ];
 
 const popularItems = [
     {
-        name: 'Eyes Lounge',
-        description: 'Bisco Do Lobo',
-        price: '$12,000',
-        image: 'https://via.placeholder.com/150',
+        name: 'Ichigo',
+        description: 'Clavar La Espada',
+        price: '$12',
+        image: 'image/Ichigo.jpg',
     },
     {
-        name: 'Luxury Sofa',
-        description: 'Elegant Designs',
-        price: '$7,500',
-        image: 'https://via.placeholder.com/150',
+        name: 'Ship Wallpaper',
+        description: 'Elegant Poster',
+        price: '$7',
+        image: 'image/Ship.jpg',
     }
 ];
+
+
 
 // Load the cart from localStorage if it exists, or initialize an empty array
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -160,3 +179,8 @@ function updateCartDisplay() {
 renderProducts();
 renderPopularItems();
 updateCartDisplay();  // Update cart display on page load
+
+
+
+
+

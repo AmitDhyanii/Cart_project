@@ -13,3 +13,34 @@
 .shader{
     background: linear-gradient(to right bottom, #69628a, #040309);
 }
+
+/* Ensure the images are centered */
+.product .image,
+.cart-item .image {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ensure container dimensions for the images */
+.product .image {
+    width: 14rem;
+    height: 13rem;
+    border-radius: 1rem;
+}
+
+.cart-item .image {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1rem;
+}
+
+/* Ensure that the images in cart are centered properly */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
