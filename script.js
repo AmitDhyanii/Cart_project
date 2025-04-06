@@ -254,8 +254,20 @@ function showCart() {
                 </div>
             </div>`;
     });
+
+    // Add total and checkout button
+    clutter += `
+        <div class="cart-total p-2 text-right font-bold border-t border-gray-200">
+            Total: <span id="cartTotal" class="text-green-600">$0</span>
+        </div>
+        <div class="p-2 text-right">
+            <button id="checkoutBtn" class="bg-[#4A4563] text-white px-4 py-2 rounded hover:bg-[#3a344e] transition-all">Checkout</button>
+        </div>
+    `;
+
     cartContainer.innerHTML = clutter;
 
+    // Attach event listeners
     document.querySelectorAll('.increase').forEach(button => {
         button.addEventListener('click', function () {
             increaseQuantity(parseInt(this.dataset.id));
@@ -267,6 +279,39 @@ function showCart() {
             decreaseQuantity(parseInt(this.dataset.id));
         });
     });
+
+    updateTotal();
+
+    // Checkout button logic
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+
+            // Show confirmation popup (optional: replace with modal later)
+            alert("🛒 Thank you for your purchase!");
+
+            // Clear the cart
+            cart = [];
+            showCart();
+        });
+    }
+}
+
+
+function updateTotal() {
+    const total = cart.reduce((sum, item) => {
+        const price = parseFloat(item.price.replace('$', ''));
+        return sum + price * item.quantity;
+    }, 0);
+
+    const totalElement = document.getElementById('cartTotal');
+    if (totalElement) {
+        totalElement.textContent = `$${total.toFixed(2)}`;
+    }
 }
 
 // Toggle Cart Visibility
