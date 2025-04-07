@@ -290,9 +290,8 @@ function showCart() {
                 alert("Your cart is empty!");
                 return;
             }
-
-            // Show confirmation popup (optional: replace with modal later)
-            alert("🛒 Thank you for your purchase!");
+            // Show checkout modal
+            document.getElementById('checkoutModal').classList.remove('hidden');
 
             // Clear the cart
             cart = [];
@@ -318,6 +317,10 @@ function updateTotal() {
 document.querySelector('.carticon').addEventListener('click', () => {
     const cartContainer = document.querySelector('.cartexpnd');
     cartContainer.classList.toggle("hidden"); // Toggle visibility
+});
+
+document.getElementById('closeModal').addEventListener('click', () => {
+    document.getElementById('checkoutModal').classList.add('hidden');
 });
 
 showProducts();
