@@ -290,13 +290,31 @@ function showCart() {
                 alert("Your cart is empty!");
                 return;
             }
-            // Show checkout modal
-            document.getElementById('checkoutModal').classList.remove('hidden');
-
-            // Clear the cart
-            cart = [];
-            showCart();
-        });
+        
+            // Show modal
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        
+            // Fire confetti 🎉
+            confetti({
+                particleCount: 100,
+                spread: 80,
+                origin: { y: 0.6 }
+            });
+        
+            // Clear cart after short delay
+            setTimeout(() => {
+                cart = [];
+                showCart();
+            }, 300);
+        
+            // Close modal on button
+            document.getElementById('closeModal').addEventListener('click', () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            });
+        });        
     }
 }
 
