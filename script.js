@@ -290,32 +290,46 @@ function showCart() {
                 alert("Your cart is empty!");
                 return;
             }
-        
-            // Show modal
-            const modal = document.getElementById('successModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        
-            // Fire confetti 🎉
-            confetti({
-                particleCount: 100,
-                spread: 80,
-                origin: { y: 0.6 }
-            });
-        
-            // Clear cart after short delay
+    
+            // Disable button + show spinner + text
+            checkoutBtn.disabled = true;
+            checkoutBtn.innerHTML = `
+                <div class="flex items-center justify-center">
+                    <div class="spinner mr-2"></div>
+                    Processing...
+                </div>
+            `;
+    
+            // Simulate loading / charge-up effect
             setTimeout(() => {
+                // Re-enable button + reset text
+                checkoutBtn.disabled = false;
+                checkoutBtn.innerHTML = `Checkout`;
+    
+                // Show modal
+                const modal = document.getElementById('successModal');
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+    
+                // Fire confetti 🎉
+                confetti({
+                    particleCount: 100,
+                    spread: 80,
+                    origin: { y: 0.6 }
+                });
+    
+                // Clear cart
                 cart = [];
                 showCart();
-            }, 300);
-        
-            // Close modal on button
-            document.getElementById('closeModal').addEventListener('click', () => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            });
-        });        
-    }
+    
+                // Close modal on button
+                document.getElementById('closeModal').addEventListener('click', () => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                });
+            }, 2000); // 2-second "charging" delay
+        });
+    }    
 }
 
 

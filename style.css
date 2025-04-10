@@ -78,4 +78,18 @@
     animation: bounceOnce 0.5s ease;
   }
 
+/* css spinner  */
+.spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #facc15; /* yellow */
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    animation: spin 0.6s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
   
