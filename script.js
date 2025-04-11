@@ -292,18 +292,19 @@ function showCart() {
             }
     
             // Disable button + show spinner + text
+            checkoutBtn.classList.add("glow-aura");
             checkoutBtn.disabled = true;
             checkoutBtn.innerHTML = `
                 <div class="flex items-center justify-center">
-                    <div class="spinner mr-2"></div>
-                    Processing...
-                </div>
-            `;
+                <div class="spinner mr-2"></div>
+                    processing...
+                </div>`;
     
             // Simulate loading / charge-up effect
             setTimeout(() => {
                 // Re-enable button + reset text
                 checkoutBtn.disabled = false;
+                checkoutBtn.classList.remove("glow-aura");
                 checkoutBtn.innerHTML = `Checkout`;
     
                 // Show modal
