@@ -204,6 +204,8 @@ function addToCart() {
                 cart.push({ ...products[index], id: Date.now(), quantity: 1 }); // Add new item with quantity 1
             }
             showCart();
+
+            showToast("Item Added!", "success");
         }
     });
 }
@@ -222,6 +224,8 @@ function decreaseQuantity(id) {
         item.quantity -= 1;
         if (item.quantity === 0) {
             cart = cart.filter(i => i.id !== id); // Remove item from cart
+
+            showToast("Item Removed!", "error");
         }
         showCart();
     }
@@ -332,6 +336,35 @@ function showCart() {
         });
     }    
 }
+
+// toast function
+function showToast(message, type = "info") {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+
+    // Style based on type
+    if (type === "success") {
+        toast.classList.remove("bg-red-600");
+        toast.classList.add("bg-green-600");
+    } else if (type === "error") {
+        toast.classList.remove("bg-green-600");
+        toast.classList.add("bg-red-600");
+    } else {
+        toast.classList.remove("bg-green-600", "bg-red-600");
+        toast.classList.add("bg-black");
+    }
+
+    // Show toast
+    toast.classList.remove("opacity-0", "pointer-events-none");
+    toast.classList.add("opacity-100");
+
+    // Hide toast after 2s
+    setTimeout(() => {
+        toast.classList.remove("opacity-100");
+        toast.classList.add("opacity-0");
+    }, 2000);
+}
+
 
 
 function updateTotal() {
