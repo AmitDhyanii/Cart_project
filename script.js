@@ -214,6 +214,7 @@ function increaseQuantity(id) {
     const item = cart.find(item => item.id === id);
     if (item) {
         item.quantity += 1;
+        showToast("Quantity Updated");
         showCart();
     }
 }
@@ -222,14 +223,18 @@ function decreaseQuantity(id) {
     const item = cart.find(item => item.id === id);
     if (item) {
         item.quantity -= 1;
+
         if (item.quantity === 0) {
             cart = cart.filter(i => i.id !== id); // Remove item from cart
-
             showToast("Item Removed!", "error");
+        } else {
+            showToast("Quantity Updated");
         }
+
         showCart();
     }
 }
+
 
 function showCart() {
     const cartContainer = document.querySelector('.cartexpnd');
